@@ -1,6 +1,6 @@
 ---
 title: "Welcome to my blog"
-date: 2025-03-16
+date: 2025-03-15
 ---
 ## This is my first blog post
 
