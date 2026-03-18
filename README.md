@@ -1,37 +1,35 @@
 # Andy Bevan · Technical Journal
 
-Fresh Astro-powered blog with MDX, editorial typography, and a hidden theme lab so you can audition blue-led directions without shipping a switch to visitors.
-
-## What’s inside
-- Astro 6 + `@astrojs/mdx` for markdown-first editing and in-post component drops.
-- Three curated blue themes plus a **theme lab** route that lets you toggle them while you’re iterating.
-- Local Docker dev that mounts the repo so you can edit without rebuilding the container.
-- GitHub Pages deployment via GitHub Actions (build output lands in `dist` and publishes via `gh-pages`).
+Powered by the off-the-shelf AstroPaper theme, this repo now focuses purely on the writing: two MD posts, a curated layout, and a theme showcase where you can swap between other ready-made Astro templates (Journal, Writer, etc.) without rebuilding the tooling.
 
 ## Local development
 
 ### Node (preferred)
-1. `npm install`
-2. `npm run dev -- --host 0.0.0.0 --port 4173`
-3. Visit `http://127.0.0.1:4173`
+
+1. Install Node `24.14.0` or newer.
+2. `npm install`
+3. `npm run dev -- --host 0.0.0.0 --port 4173`
+4. Visit `http://127.0.0.1:4173` and explore `/theme-showcase`.
 
 ### Docker
-1. `docker compose up`
-2. `http://127.0.0.1:4173` is served from inside the container.
+
+1. `docker compose up --build`
+2. Browse `http://127.0.0.1:4173` while the container runs; edits on your host refresh instantly because the workspace is mounted.
 3. Stop with `docker compose down`.
 
-The Docker setup runs `npm install` once inside the image and then keeps `node_modules` in a named volume so edits to your files refresh instantly without rebuilding the image.
+The Dockerfile pins `node:24.14-slim` to match Astro’s requirement.
 
-## Theme lab
+## Theme showcase
 
-Go to `http://127.0.0.1:4173/theme-lab` while running locally to switch between the three blue palettes. The main navigation doesn’t expose this route, so once you lock in a palette (`siteConfig.activeThemeId`), the rest of the world only sees that final look.
+Visit `/theme-showcase` for curated links to other Astro templates. Each card includes a live demo and the `npx create astro@latest --template …` command so you can spin up a new look in seconds.
 
-## Deployment
+## Build & deploy
 
-Push to `main` (or merge your feature branch) and the GitHub Actions workflow at `.github/workflows/deploy.yml` will build the site and publish `dist` to the `gh-pages` branch.
+1. `npm run build` (runs `astro check`, `astro build`, and `pagefind` for search).
+2. When you push to `main`, `.github/workflows/deploy.yml` runs the same build and publishes `dist` to `gh-pages`.
 
-## Future roadmap
+## Future ideas
 
-1. Publish MDX-based technical posts.
-2. Add interactive demos or showcase widgets via Astro Islands inside posts.
-3. Keep evolving the theme lab until one palette feels settled, then remove the route or guard it behind a flag.
+1. Keep integrating interactive demos inside these posts via Astro islands.
+2. Expand the theme showcase content when more off-the-shelf directions appear.
+3. Lock the theme you eventually ship under `src/config.ts` and remove the showcase link if you prefer a single permanent brand.

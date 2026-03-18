@@ -1,0 +1,23 @@
+export const SITE = {
+  website: "https://andybevan.github.io",
+  author: "Andy Bevan",
+  profile: "https://github.com/andybevan",
+  desc: "A technical journal about systems, interfaces, and tooling craft.",
+  title: "Andy Bevan · Journal",
+  ogImage: "https://astro-paper.pages.dev/astropaper-og.jpg",
+  lightAndDarkMode: true,
+  postPerIndex: 4,
+  postPerPage: 4,
+  scheduledPostMargin: 15 * 60 * 1000,
+  showArchives: true,
+  showBackButton: true,
+  editPost: {
+    enabled: true,
+    text: "Edit page",
+    url: "https://github.com/andybevan/andybevan.github.io/edit/feature/astro-rebuild/",
+  },
+  dynamicOgImage: true,
+  dir: "ltr",
+  lang: "en",
+  timezone: "America/New_York",
+} as const;

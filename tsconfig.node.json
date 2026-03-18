@@ -1,7 +1,0 @@
-{
-  "extends": "astro/tsconfigs/node",
-  "compilerOptions": {
-    "types": ["node"]
-  },
-  "include": ["astro.config.*", "vite.config.*", "scripts"]
-}

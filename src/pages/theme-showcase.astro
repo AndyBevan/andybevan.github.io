@@ -1,0 +1,84 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import LinkButton from "@/components/LinkButton.astro";
+
+const options = [
+  {
+    title: "AstroPaper",
+    description:
+      "The foundation we just adopted—minimal, responsive, and tuned for editorial writing with built-in Tailwind animations.",
+    demo: "https://astropaper.pages.dev/",
+    template: "astro-paper",
+  },
+  {
+    title: "Journal",
+    description:
+      "Supports light + dark color schemes, bold typography, and a production-ready blog scaffold with tagging and pagination.",
+    demo: "https://template-journal.pages.dev/",
+    template: "template-journal",
+  },
+  {
+    title: "Writer",
+    description:
+      "A storytelling-focused layout with layered mastheads, expressive motion, and a ready-made RSS workflow.",
+    demo: "https://template-writer.pages.dev/",
+    template: "template-writer",
+  },
+];
+---
+
+<Layout>
+  <Header />
+  <main id="main-content" class="app-layout">
+    <section class="pt-12 pb-10">
+      <h1 class="text-3xl font-semibold tracking-tight">Theme showcase</h1>
+      <p class="mt-3 max-w-3xl text-base text-muted">
+        Each of these Astro templates ships complete layouts, animations, and editorial tone. For now
+        they exist as standalone experiments you can scaffold alongside this repo (or even replace it
+        temporarily when you want a new flavor).
+      </p>
+    </section>
+
+    <section class="grid gap-6 sm:grid-cols-2">
+      {options.map((theme) => (
+        <article class="rounded-3xl border border-border bg-background/70 p-6 shadow-2xl shadow-black/40">
+          <h2 class="text-2xl font-semibold">{theme.title}</h2>
+          <p class="mt-2 text-sm text-muted">{theme.description}</p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <LinkButton
+              href={theme.demo}
+              class="secondary"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Live demo
+            </LinkButton>
+            <LinkButton
+              href={`https://astro.new/?template=${theme.template}`}
+              class="secondary"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Try template
+            </LinkButton>
+          </div>
+          <p class="mt-4 text-xs uppercase tracking-[0.4em] text-muted">
+            npx create astro@latest --template {theme.template}
+          </p>
+        </article>
+      ))}
+    </section>
+
+    <section class="mt-12 rounded-3xl border border-border bg-surface/80 p-6">
+      <h3 class="text-xl font-semibold">Resetting for experiments</h3>
+      <p class="mt-2 text-sm text-muted">
+        Spin up any of these templates as a side project, swap in your own content, and see how the
+        layouts, motion, and typography feel. You can always copy the files that land under `src/`
+        back into this repo once you know which direction fits best.
+      </p>
+    </section>
+  </main>
+  <Footer />
+</Layout>
