@@ -48,7 +48,9 @@ const showThemeLab = import.meta.env.DEV;
           </ul>
         </nav>
       </header>
-      {Astro.props.children}
+      <main>
+        <slot />
+      </main>
       <footer>
         <span>© {new Date().getFullYear()} {siteConfig.author}</span>
         <span>
