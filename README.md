@@ -10,6 +10,25 @@
 # AndyBevan - GitHub Pages
 
 This is the source repo for [andybevan.github.io](https://andybevan.github.io/)
+
+## Local development
+
+To preview styling changes locally:
+
+1. Install Ruby and Bundler.
+2. Run `bundle install`.
+3. Start the site with `bundle exec jekyll serve`.
+4. Open `http://127.0.0.1:4000`.
+
+If you want Jekyll to rebuild automatically while you edit styles, keep the server running and refresh the browser after each change.
+
+Alternatively, you can use Docker so the Ruby/Bundler toolchain runs inside a container while your source files stay on the host:
+
+1. Install Docker Desktop and ensure the daemon is running.
+2. Run `docker compose up`.
+3. Open `http://127.0.0.1:4000`.
+
+The compose service mounts the repo into the container, runs `bundle install` inside the image, and starts `bundle exec jekyll serve --host 0.0.0.0`, so edits on your host are reflected immediately in the browser.
 </header>
 
 <!--

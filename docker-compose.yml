@@ -1,0 +1,16 @@
+services:
+  jekyll:
+    image: ruby:3.3
+    working_dir: /site
+    volumes:
+      - ./:/site:cached
+      - bundle_cache:/bundle
+    ports:
+      - "4000:4000"
+    command: bash -lc "bundle install && bundle exec jekyll serve --host 0.0.0.0"
+    environment:
+      BUNDLE_PATH: /bundle
+      BUNDLE_JOBS: 4
+
+volumes:
+  bundle_cache:
