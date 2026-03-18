@@ -1,0 +1,27 @@
+---
+import { siteConfig } from "../data/siteConfig";
+import { themeMap } from "../data/themes";
+
+const serialized = JSON.stringify(themeMap).replace(/</g, "\\u003c");
+const activeThemeId = siteConfig.activeThemeId;
+---
+<script type="module" is:inline set:html={`
+  const THEMES = JSON.parse('${serialized}');
+  const applyTheme = (themeId) => {
+    const theme = THEMES[themeId];
+    if (!theme) return;
+    const root = document.documentElement;
+    root.dataset.theme = theme.id;
+    root.style.setProperty("--color-accent", theme.accent);
+    root.style.setProperty("--color-background", theme.palette.background);
+    root.style.setProperty("--color-surface", theme.palette.surface);
+    root.style.setProperty("--color-border", theme.palette.border);
+    root.style.setProperty("--color-text-primary", theme.palette.textPrimary);
+    root.style.setProperty("--color-text-muted", theme.palette.textMuted);
+    root.style.setProperty("--color-glow", theme.palette.glow);
+    root.style.setProperty("--color-gradient", theme.palette.gradient);
+    root.style.setProperty("--color-detail", theme.palette.detail);
+  };
+  applyTheme('${activeThemeId}');
+  window.__applyTheme = applyTheme;
+`} />

@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { posts } from "../lib/posts";
+
+const latest = posts.slice(0, 3);
+---
+<BaseLayout title="Home · Andy Bevan">
+  <section class="surface">
+    <p class="micro-heading">Latest dispatches</p>
+    <div class="grid posts-grid two-column">
+      {latest.map(({ slug, frontmatter }) => (
+        <article class="post-card">
+          <div class="micro-heading">{new Date(frontmatter.pubDate).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</div>
+          <h3>
+            <a href={`/blog/${slug}`}>{frontmatter.title}</a>
+          </h3>
+          <p>{frontmatter.description}</p>
+          <div style="margin-top:1rem;font-size:0.85rem;color:var(--color-text-muted);">
+            {frontmatter.tags.join(" · ")}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
