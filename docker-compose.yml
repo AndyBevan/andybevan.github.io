@@ -3,13 +3,19 @@ services:
     build:
       context: .
     ports:
-      - "4173:4173"
+      - "${THEME_PORT:-4173}:${THEME_PORT:-4173}"
     volumes:
       - ./:/app:cached
       - node_modules:/app/node_modules
-    command: npm run dev -- --host 0.0.0.0 --port 4173
+      - theme_node_modules:${THEME_NODE_MODULES_PATH:-/app/.theme_node_modules}
+    command: npm run theme:dev
     environment:
       NODE_ENV: development
+      THEME_PORT: ${THEME_PORT:-4173}
+      THEME_ID: ${THEME_ID:-}
+      THEME_NPM_FLAGS: ${THEME_NPM_FLAGS:-}
+      THEME_SKIP_BUILD: ${THEME_SKIP_BUILD:-false}
 
 volumes:
   node_modules:
+  theme_node_modules:

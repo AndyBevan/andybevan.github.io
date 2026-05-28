@@ -2,31 +2,20 @@
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
-import LinkButton from "@/components/LinkButton.astro";
+import themes from "../../themes/registry.json" assert { type: "json" };
 
-const options = [
-  {
-    title: "AstroPaper",
-    description:
-      "The foundation we just adopted—minimal, responsive, and tuned for editorial writing with built-in Tailwind animations.",
-    demo: "https://astropaper.pages.dev/",
-    template: "astro-paper",
-  },
-  {
-    title: "Journal",
-    description:
-      "Supports light + dark color schemes, bold typography, and a production-ready blog scaffold with tagging and pagination.",
-    demo: "https://template-journal.pages.dev/",
-    template: "template-journal",
-  },
-  {
-    title: "Writer",
-    description:
-      "A storytelling-focused layout with layered mastheads, expressive motion, and a ready-made RSS workflow.",
-    demo: "https://template-writer.pages.dev/",
-    template: "template-writer",
-  },
+const workflow = [
+  { label: "List registry", command: "npm run theme:list" },
+  { label: "Install a template", command: "npm run theme:install -- <id>" },
+  { label: "Enable the active template", command: "npm run theme:enable -- <id>" },
+  { label: "Run the active theme", command: "npm run theme:dev" },
 ];
+
+const options = themes.map(theme => ({
+  ...theme,
+  installCommand: `npm run theme:install -- ${theme.id}`,
+  enableCommand: `npm run theme:enable -- ${theme.id}`,
+}));
 ---
 
 <Layout>
@@ -35,49 +24,43 @@ const options = [
     <section class="pt-12 pb-10">
       <h1 class="text-3xl font-semibold tracking-tight">Theme showcase</h1>
       <p class="mt-3 max-w-3xl text-base text-muted">
-        Each of these Astro templates ships complete layouts, animations, and editorial tone. For now
-        they exist as standalone experiments you can scaffold alongside this repo (or even replace it
-        temporarily when you want a new flavor).
+        Each of these Astro templates ships a very different editorial tone. Install one, enable it,
+        then drop into <code class="font-mono">npm run theme:dev</code> to see how it feels—no
+        rebuilds, just one repo running the enabled project.
       </p>
     </section>
 
     <section class="grid gap-6 sm:grid-cols-2">
-      {options.map((theme) => (
+      {options.map(theme => (
         <article class="rounded-3xl border border-border bg-background/70 p-6 shadow-2xl shadow-black/40">
-          <h2 class="text-2xl font-semibold">{theme.title}</h2>
+          <h2 class="text-2xl font-semibold">{theme.name}</h2>
           <p class="mt-2 text-sm text-muted">{theme.description}</p>
-          <div class="mt-6 flex flex-wrap gap-3">
-            <LinkButton
-              href={theme.demo}
-              class="secondary"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Live demo
-            </LinkButton>
-            <LinkButton
-              href={`https://astro.new/?template=${theme.template}`}
-              class="secondary"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Try template
-            </LinkButton>
-          </div>
           <p class="mt-4 text-xs uppercase tracking-[0.4em] text-muted">
-            npx create astro@latest --template {theme.template}
+            Demo: <a class="underline" href={theme.demo} target="_blank" rel="noreferrer">{theme.demo}</a>
           </p>
+          <p class="mt-1 text-xs uppercase tracking-[0.4em] text-muted">Repo: {theme.repo}</p>
+          <div class="mt-6 flex flex-wrap gap-2 text-xs font-mono text-muted">
+            <span class="rounded-full border border-border px-3 py-1">{theme.installCommand}</span>
+            <span class="rounded-full border border-border px-3 py-1">{theme.enableCommand}</span>
+          </div>
         </article>
       ))}
     </section>
 
     <section class="mt-12 rounded-3xl border border-border bg-surface/80 p-6">
-      <h3 class="text-xl font-semibold">Resetting for experiments</h3>
+      <h3 class="text-xl font-semibold">Workflow commands</h3>
       <p class="mt-2 text-sm text-muted">
-        Spin up any of these templates as a side project, swap in your own content, and see how the
-        layouts, motion, and typography feel. You can always copy the files that land under `src/`
-        back into this repo once you know which direction fits best.
+        Use the commands below to manage the enabled template, and set <code class="font-mono">THEME_PORT</code>
+        before running <code class="font-mono">docker compose up</code> if you need another port for side-by-side comparisons.
       </p>
+      <div class="mt-4 grid gap-3 sm:grid-cols-2">
+        {workflow.map(step => (
+          <div class="rounded-2xl border border-border bg-background/70 px-4 py-3 text-sm text-muted">
+            <p class="text-xs uppercase tracking-[0.4em] text-muted">{step.label}</p>
+            <p class="font-mono text-sm text-foreground">{step.command}</p>
+          </div>
+        ))}
+      </div>
     </section>
   </main>
   <Footer />

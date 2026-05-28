@@ -1,0 +1,67 @@
+[
+  {
+    "id": "spectre",
+    "name": "Spectre",
+    "description": "Terminal-inspired Astro blog with a noir aesthetic and expressive typography.",
+    "repo": "https://github.com/louisescher/spectre.git",
+    "branch": "master",
+    "demo": "https://spectre.lou.gg/",
+    "posts_folder": "src/content/posts"
+  },
+  {
+    "id": "astro-paper",
+    "name": "AstroPaper",
+    "description": "Minimal, editorial blog theme with responsive typography and soft interactions.",
+    "repo": "https://github.com/satnaing/astro-paper.git",
+    "branch": "main",
+    "demo": "https://astropaper.pages.dev/",
+    "posts_folder": "src/data/blog"
+  },
+  {
+    "id": "fuwari",
+    "name": "Fuwari",
+    "description": "Playful, blue-accented Astro blog template with large imagery and typographic animation.",
+    "repo": "https://github.com/saicaca/fuwari.git",
+    "branch": "main",
+    "demo": "https://fuwari.vercel.app/",
+    "posts_folder": "src/content/posts"
+  },
+  {
+    "id": "astrowind",
+    "name": "AstroWind",
+    "description": "Dark-mode friendly storytelling layout built with Astro 5 and Tailwind CSS.",
+    "repo": "https://github.com/arthelokyo/astrowind.git",
+    "branch": "main",
+    "demo": "https://astrowind.vercel.app/",
+    "posts_folder": "src/data/post"
+  },
+  {
+    "id": "starwind-ui",
+    "name": "Starwind UI",
+    "description": "Animated Astro component system with Tailwind v4 styling and shadcn-style ergonomics.",
+    "repo": "https://github.com/starwind-ui/starwind-ui.git",
+    "branch": "main",
+    "demo": "https://starwind.dev/"
+  },
+  {
+    "id": "jd-blog-astro",
+    "name": "JD Blog Astro",
+    "description": "Dark, MDX-driven Astro blog template with search, reading time, and Tailwind styling.",
+    "repo": "https://github.com/jonadev-ok/astro-blog-template.git",
+    "branch": "main",
+    "demo": "https://astro-blog-template.vercel.app/",
+    "project_path": "astro-blog-template",
+    "posts_folder": "astro-blog-template/src/content/posts",
+    "run_mode": "preview",
+    "build_host": true
+  },
+  {
+    "id": "bespoke-theme-final",
+    "name": "Bespoke Theme Final",
+    "description": "The final custom blue-led Astro blog captured by the bespoke-theme-final tag.",
+    "repo": "https://github.com/AndyBevan/andybevan.github.io.git",
+    "branch": "bespoke-theme-final",
+    "demo": "",
+    "posts_folder": "src/content/posts"
+  }
+]

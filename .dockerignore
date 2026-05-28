@@ -1,0 +1,8 @@
+node_modules
+.astro
+dist
+themes/*/node_modules
+themes/*/.git
+public
+*.log
+package-lock.json

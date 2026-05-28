@@ -10,7 +10,12 @@
     "preview": "astro preview",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "theme:list": "node scripts/theme-manager.js list",
+    "theme:install": "node scripts/theme-manager.js install",
+    "theme:enable": "node scripts/theme-manager.js enable",
+    "theme:dev": "node scripts/theme-manager.js run",
+    "posts:sync": "node scripts/posts-sync.js"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.14",
